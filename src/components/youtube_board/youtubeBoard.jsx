@@ -1,16 +1,18 @@
 import React from "react";
-import YoutubeCard from "./youtubeCard";
+import YoutubeCard from "../youtube_card/youtubeCard";
+import styles from "./youtubeBoard.module.css";
 
 const YoutubeBoard = (props) => {
   const { videoList } = props;
 
   return (
-    <ul>
+    <ul className={styles.board}>
       {videoList
         ? videoList.map((item) => (
             <YoutubeCard
               key={item.id.videoId}
-              name={item.snippet.title}
+              title={item.snippet.title}
+              channelTitle={item.snippet.channelTitle}
               src={item.snippet.thumbnails.default.url}
             />
           ))

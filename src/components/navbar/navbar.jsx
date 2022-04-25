@@ -1,5 +1,5 @@
 import React, { memo, useRef } from "react";
-import { searchYoutube } from "../libs/youtubeApis";
+import { searchYoutube } from "../../libs/youtubeApis";
 
 const Navbar = memo((props) => {
   const { setVideoList } = props;

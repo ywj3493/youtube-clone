@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./app.css";
-import Navbar from "./components/navbar";
-import YoutubeBoard from "./components/youtubeBoard";
+import Navbar from "./components/navbar/navbar";
+import YoutubeBoard from "./components/youtube_board/youtubeBoard";
 import { mostPopularYoutube } from "./libs/youtubeApis";
 
 function App() {
