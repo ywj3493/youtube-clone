@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./app.module.css";
 import Navbar from "./components/navbar/navbar";
 import YoutubeBoard from "./components/youtube_board/youtubeBoard";
 import YoutubeDetail from "./components/youtube_detail/youtubeDetail";
-import Youtube from "./service/youtube";
 
 function App({ youtube }) {
   const [videoList, setVideoList] = useState([]);
   const [selectedVideo, setSeletedVideo] = useState(null);
 
-  const search = (q) => {
-    youtube.search(q, setVideoList);
-    setSeletedVideo(null);
-  };
+  const search = useCallback(
+    (q) => {
+      youtube.search(q, setVideoList);
+      setSeletedVideo(null);
+    },
+    [youtube]
+  );
 
   const selectVideo = (video) => {
-    console.dir("selectedVideo");
     setSeletedVideo(video);
   };
 

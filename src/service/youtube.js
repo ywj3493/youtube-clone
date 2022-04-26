@@ -1,19 +1,18 @@
-import axios from "axios";
-
 export default class Youtube {
-  constructor(key) {
-    this.key = key;
+  constructor(httpClient) {
+    this.youtube = httpClient;
   }
 
   async search(q, callback) {
-    let config = {
-      method: "get",
-      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResult=25&q=${q}&type=video&key=${this.key}`,
-      headers: {},
-    };
-
     try {
-      const response = await axios(config);
+      const response = await this.youtube.get("search", {
+        params: {
+          part: "snippet",
+          maxResults: 25,
+          type: "video",
+          q: q,
+        },
+      });
       callback(response.data.items);
     } catch (error) {
       console.log(error);
@@ -21,14 +20,14 @@ export default class Youtube {
   }
 
   async mostPopular(callback) {
-    let config = {
-      method: "get",
-      url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${this.key}`,
-      headers: {},
-    };
-
     try {
-      const response = await axios(config);
+      const response = await this.youtube.get("search", {
+        params: {
+          part: "snippet",
+          chart: "mostPopular",
+          maxResults: 25,
+        },
+      });
       callback(response.data.items);
     } catch (error) {
       console.log(error);

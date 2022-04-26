@@ -1,5 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
-import Youtube from "../../service/youtube";
+import React, { memo, useRef } from "react";
 import styles from "./navbar.module.css";
 
 const Navbar = memo(({ searchCallback, search }) => {
