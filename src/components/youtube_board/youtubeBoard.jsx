@@ -2,18 +2,21 @@ import React from "react";
 import YoutubeCard from "../youtube_card/youtubeCard";
 import styles from "./youtubeBoard.module.css";
 
-const YoutubeBoard = ({ videoList }) => {
+const YoutubeBoard = ({ videoList, onVideoClick, display }) => {
   return (
     <ul className={styles.board}>
       {videoList
-        ? videoList.map((item) => (
-            <YoutubeCard
-              key={item.id.videoId}
-              title={item.snippet.title}
-              channelTitle={item.snippet.channelTitle}
-              src={item.snippet.thumbnails.default.url}
-            />
-          ))
+        ? videoList.map((item) => {
+            return (
+              <YoutubeCard
+                key={item.id}
+                video={item}
+                src={item.snippet.thumbnails.default.url}
+                onClickCard={onVideoClick}
+                display={display}
+              />
+            );
+          })
         : null}
     </ul>
   );

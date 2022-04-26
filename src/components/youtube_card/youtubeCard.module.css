@@ -1,7 +1,14 @@
 .card {
   margin-bottom: 0.2rem;
-  width: 50%;
   padding: 0.2em;
+}
+
+.card.grid {
+  width: 50%;
+}
+
+.card.list {
+  width: 100%;
 }
 
 .video {

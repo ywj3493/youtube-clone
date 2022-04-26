@@ -1,13 +1,21 @@
 import React from "react";
 import styles from "./youtubeCard.module.css";
 
-const YoutubeCard = ({ key, title, channelTitle, src, onClickCard }) => {
-  const onClickTemp = () => {
-    console.dir("onClickCard");
-  };
-
+const YoutubeCard = ({
+  video,
+  onClickCard,
+  display,
+  src,
+  video: {
+    snippet: { title, channelTitle },
+  },
+}) => {
+  const displayType = display === "list" ? styles.list : styles.grid;
   return (
-    <li key={key} className={styles.card} onClick={onClickCard ?? onClickTemp}>
+    <li
+      className={`${styles.card} ${displayType}`}
+      onClick={() => onClickCard(video)}
+    >
       <div className={styles.video}>
         <img className={styles.image} src={src} alt="video thumbnail" />
         <div>

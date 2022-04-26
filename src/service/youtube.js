@@ -14,7 +14,6 @@ export default class Youtube {
 
     try {
       const response = await axios(config);
-      console.dir(JSON.stringify(response.data.items.length));
       callback(response.data.items);
     } catch (error) {
       console.log(error);

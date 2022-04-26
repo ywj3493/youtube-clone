@@ -2,13 +2,12 @@ import React, { memo, useEffect, useRef } from "react";
 import Youtube from "../../service/youtube";
 import styles from "./navbar.module.css";
 
-const Navbar = memo(({ setVideoList, search }) => {
+const Navbar = memo(({ searchCallback, search }) => {
   const inputRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.dir("onSubmit");
-    search(inputRef.current.value, setVideoList);
+    search(inputRef.current.value, searchCallback);
   };
 
   return (
