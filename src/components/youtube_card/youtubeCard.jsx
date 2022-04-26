@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./youtubeCard.module.css";
 
-const YoutubeCard = (props) => {
-  const { key, title, channelTitle, src, onClickCard } = props;
-
+const YoutubeCard = ({ key, title, channelTitle, src, onClickCard }) => {
   const onClickTemp = () => {
     console.dir("onClickCard");
   };

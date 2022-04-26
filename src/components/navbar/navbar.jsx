@@ -1,29 +1,37 @@
-import React, { memo, useRef } from "react";
-import { searchYoutube } from "../../libs/youtubeApis";
+import React, { memo, useEffect, useRef } from "react";
+import Youtube from "../../service/youtube";
+import styles from "./navbar.module.css";
 
-const Navbar = memo((props) => {
-  const { setVideoList } = props;
-
+const Navbar = memo(({ setVideoList, search }) => {
   const inputRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.dir("onSubmit");
-    searchYoutube(inputRef.current.value, setVideoList);
+    search(inputRef.current.value, setVideoList);
   };
 
   return (
-    <nav>
-      <form onSubmit={onSubmit}>
-        <img src=""></img>
-        <span>YouTubeClone</span>
-        <input ref={inputRef}></input>
-        <button>
-          <i className="fas fa-leaf"></i>
-          search
+    <header>
+      <form className={styles.navbar} onSubmit={onSubmit}>
+        <div className={styles.logo}>
+          <img src="/images/logo.png" alt="logo"></img>
+          <h1>YouTubeClone</h1>
+        </div>
+        <input
+          className={styles.input}
+          ref={inputRef}
+          placeholder="Search"
+        ></input>
+        <button className={styles.button}>
+          <img
+            className={styles.buttonImg}
+            src="/images/search.png"
+            alt="search"
+          />
         </button>
       </form>
-    </nav>
+    </header>
   );
 });
 

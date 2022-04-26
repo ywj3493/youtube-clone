@@ -2,9 +2,7 @@ import React from "react";
 import YoutubeCard from "../youtube_card/youtubeCard";
 import styles from "./youtubeBoard.module.css";
 
-const YoutubeBoard = (props) => {
-  const { videoList } = props;
-
+const YoutubeBoard = ({ videoList }) => {
   return (
     <ul className={styles.board}>
       {videoList

@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-import "./app.css";
+import styles from "./app.module.css";
 import Navbar from "./components/navbar/navbar";
 import YoutubeBoard from "./components/youtube_board/youtubeBoard";
-import { mostPopularYoutube } from "./libs/youtubeApis";
+import Youtube from "./service/youtube";
 
-function App() {
+function App({ youtube }) {
   const [videoList, setVideoList] = useState([]);
 
+  const search = (q) => {
+    youtube.search(q, setVideoList);
+  };
+
   useEffect(() => {
-    mostPopularYoutube(setVideoList);
+    youtube.mostPopular(setVideoList);
   }, []);
 
   return (
-    <>
-      <Navbar setVideoList={setVideoList} />
+    <div className={styles.app}>
+      <Navbar setVideoList={setVideoList} search={search} />
       <YoutubeBoard videoList={videoList} />
-    </>
+    </div>
   );
 }
 
